@@ -184,7 +184,7 @@ bs.one.k = function(x, y, k, xtx, form=ifelse(nrow(x)<ncol(x),2,1),
     model$lb = c(rep(-bigm,p), rep(0,p))
     model$obj = c(-2*t(x)%*%y, rep(0,p))     # The vector c in the objective
     model$Q = bdiag(xtx, Matrix(0,p,p))
-    model$vtypes = c(rep("C",p), rep("B",p)) # Variable type: cont or binary
+    model$vtype = c(rep("C",p), rep("B",p)) # Variable type: cont or binary
     model$start = c(best.beta, zvec)         # Warm start from proj gradient
   }
   else {
@@ -199,7 +199,7 @@ bs.one.k = function(x, y, k, xtx, form=ifelse(nrow(x)<ncol(x),2,1),
     model$lb = c(rep(-bigm,p), rep(0,p), rep(-zeta.bd,n))
     model$obj = c(-2*t(x)%*%y, rep(0,p+n))       # The vector c in the objective
     model$Q = bdiag(Matrix(0,2*p,2*p), Diagonal(n,1))
-    model$vtypes = c(rep("C",p), rep("B",p), rep("C",n)) # Variable type
+    model$vtype = c(rep("C",p), rep("B",p), rep("C",n)) # Variable type
     model$start = c(best.beta, zvec, x%*%best.beta)      # Warm start
   }
 
